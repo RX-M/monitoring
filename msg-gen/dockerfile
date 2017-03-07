@@ -1,0 +1,4 @@
+FROM ubuntu:16.04
+COPY ./msg-gen /msg-gen
+ENTRYPOINT ["/msg-gen"]
+CMD ["localhost","-1"]
