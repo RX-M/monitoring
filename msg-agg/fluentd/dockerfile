@@ -1,0 +1,2 @@
+FROM fluent/fluentd:v0.12.32
+COPY ./out_rawtcp.rb /etc/fluent/plugin/out_rawtcp.rb
