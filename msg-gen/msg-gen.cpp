@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
             buf << "[\"msg-gen.pressure\", " 
                 << seconds(std::time(NULL)).count()
                 << ", { \"cnt\":"
-                << "\"" << std::setfill('0') << std::setw(10) << counter << std::setw(0) << "\" }]";
+                << "\"" << std::setfill('0') << std::setw(10) << counter << std::setw(0) << "\"}]\n";
             if (send(soc, buf.str().c_str(), buf.str().size(), MSG_NOSIGNAL) == -1) {
                 throw std::string("failed to send");
             }
