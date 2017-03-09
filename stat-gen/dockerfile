@@ -1,0 +1,4 @@
+FROM ubuntu:16.04
+COPY ./stat-gen /stat-gen
+ENTRYPOINT ["/stat-gen"]
+CMD ["localhost","-1"]
