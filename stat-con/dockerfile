@@ -1,0 +1,3 @@
+FROM ubuntu:16.04
+COPY ./stat-con /stat-con
+ENTRYPOINT ["/stat-con"]

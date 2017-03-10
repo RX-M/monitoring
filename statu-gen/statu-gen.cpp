@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 
     try {
         //SOCKET: Create an IPv4 TCP socket
-        soc = socket(AF_INET, SOCK_STREAM, 0);  
+        soc = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);  
         if (soc == -1) {
             throw std::string("failed to create socket");
         }
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
         if (0 < mpm && mpm < 60000001) {
             sleep_time_us = 60000000 / mpm;
         }
-        std::cout << "Driving TCP " << argv[1] << ":" << argv[2] << " with " << mpm << " mpm, sleep(" << sleep_time_us << "us)" << std::endl;
+        std::cout << "Driving UDP " << argv[1] << ":" << argv[2] << " with " << mpm << " mpm, sleep(" << sleep_time_us << "us)" << std::endl;
 
         //GENERATE: Send traffic in loop
         int counter = 0;
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
             buf.clear();
             buf.str(std::string());
             buf << "stat-gen.p.cnt:" << std::setfill('0') << std::setw(10) << counter << std::setw(0) << "|c\n"
-                << "stat-gen.p.tm:" << seconds(std::time(NULL)).count() << "|c\n";
+                << "stat-gen.p.tme:" << seconds(std::time(NULL)).count() << "|c\n";
             if (send(soc, buf.str().c_str(), buf.str().size(), MSG_NOSIGNAL) == -1) {
                 throw std::string("failed to send");
             }

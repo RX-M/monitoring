@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
         //ACCEPT LOOP
         do {
             //ACCEPT: accept new connections
-            std::cout << "Server waiting for connections on 9911" << std::endl;
+            std::cout << "Server waiting for TCP connections on 9911" << std::endl;
             struct sockaddr_storage their_addr;
             socklen_t sin_size = sizeof their_addr;
             new_soc = accept(soc, (struct sockaddr *)&their_addr, &sin_size);
