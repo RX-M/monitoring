@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
         //RECEIVE LOOP
         std::vector<char> buffer(bufsiz);
         auto start = system_clock::now();
-        int total_bytes = 0;
+        int64_t total_bytes = 0;
         int recv_size = 0;
         while (true) {
             struct sockaddr_storage src_addr;

@@ -1,0 +1,14 @@
+FROM golang:1.8.0-alpine
+
+RUN apk update
+RUN apk add --no-cache iputils ca-certificates && \
+    update-ca-certificates
+
+RUN apk add git make
+RUN go get github.com/influxdata/telegraf
+WORKDIR $GOPATH/src/github.com/influxdata/telegraf
+RUN make
+
+EXPOSE 8125/udp 8092/udp 8094
+
+CMD ["telegraf"]

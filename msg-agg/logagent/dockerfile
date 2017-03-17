@@ -1,0 +1,20 @@
+FROM node:5
+
+# Install statsd and the json log backend
+RUN git clone http://github.com/etsy/statsd
+WORKDIR /statsd
+RUN npm install
+RUN npm install statsd-json-log-backend
+
+# This config.js is a sample, to use your own run this image with a -v something like:
+# docker run  -v ~/myconfig.js:/statsd/config.js randyabernethy/msg-agg-sd
+COPY ./config.js config.js
+
+# TCP
+EXPOSE 8124
+# UDP
+EXPOSE 8125/udp
+# Admin
+EXPOSE 8126
+
+CMD [ "node", "stats.js", "config.js" ]
