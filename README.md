@@ -5,6 +5,9 @@ This markdown captures the configuration and drivers used to benchmark various a
 Tools tested:
 * fluentd
 * logstash
+* statsd
+* telegraf
+* raw
 
 Tests are generally performed by wiring various driver arrays to the aggregator and testing the aggregator with it
 outputting to:
